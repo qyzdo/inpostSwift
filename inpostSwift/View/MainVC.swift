@@ -34,6 +34,10 @@ class MainVC: UIViewController {
     func setupUI() {
         view.backgroundColor = .white
         safeArea = view.layoutMarginsGuide
+        setupTableView()
+    }
+    
+    func setupTableView() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
@@ -42,9 +46,9 @@ class MainVC: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
+        tableView.backgroundColor = .gray
     }
-    
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
@@ -53,8 +57,9 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = parcelsList[indexPath.row].tracking_number
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
+        cell.trackingNumberLabel.text = parcelsList[indexPath.row].tracking_number
+        cell.statusLabel.text = parcelsList[indexPath.row].status
         return cell
     }
     

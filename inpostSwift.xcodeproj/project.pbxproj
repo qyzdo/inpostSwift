@@ -16,6 +16,8 @@
 		1654F92D24BA725D00B7358E /* inpostSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654F92C24BA725D00B7358E /* inpostSwiftUITests.swift */; };
 		1654F93B24BA752B00B7358E /* ApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654F93A24BA752B00B7358E /* ApiCaller.swift */; };
 		1654F93D24BA76E400B7358E /* ParcelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654F93C24BA76E300B7358E /* ParcelModel.swift */; };
+		1654F94424BA824900B7358E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654F94324BA824900B7358E /* CustomCell.swift */; };
+		1654F94624BA84AB00B7358E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654F94524BA84AB00B7358E /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		1654F92E24BA725D00B7358E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1654F93A24BA752B00B7358E /* ApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaller.swift; sourceTree = "<group>"; };
 		1654F93C24BA76E300B7358E /* ParcelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelModel.swift; sourceTree = "<group>"; };
+		1654F94324BA824900B7358E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		1654F94524BA84AB00B7358E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				1654F91324BA725D00B7358E /* Assets.xcassets */,
 				1654F91524BA725D00B7358E /* LaunchScreen.storyboard */,
 				1654F91824BA725D00B7358E /* Info.plist */,
+				1654F94524BA84AB00B7358E /* UIView+Extension.swift */,
 			);
 			path = inpostSwift;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				1654F90E24BA725B00B7358E /* MainVC.swift */,
+				1654F94324BA824900B7358E /* CustomCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -285,9 +291,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1654F90F24BA725B00B7358E /* MainVC.swift in Sources */,
+				1654F94624BA84AB00B7358E /* UIView+Extension.swift in Sources */,
 				1654F90B24BA725B00B7358E /* AppDelegate.swift in Sources */,
 				1654F90D24BA725B00B7358E /* SceneDelegate.swift in Sources */,
 				1654F93D24BA76E400B7358E /* ParcelModel.swift in Sources */,
+				1654F94424BA824900B7358E /* CustomCell.swift in Sources */,
 				1654F93B24BA752B00B7358E /* ApiCaller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
