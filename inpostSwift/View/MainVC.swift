@@ -59,7 +59,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         cell.trackingNumberLabel.text = parcelsList[indexPath.row].tracking_number
-        cell.statusLabel.text = parcelsList[indexPath.row].status
+        cell.statusLabel.text = parcelsList[indexPath.row].status!.statusRefactor()
         return cell
     }
     
