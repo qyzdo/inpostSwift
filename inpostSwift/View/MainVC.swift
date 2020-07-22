@@ -10,6 +10,7 @@ import UIKit
 class MainVC: UIViewController {
     let tableView = UITableView()
     var safeArea: UILayoutGuide!
+    var parcelsList = [ParcelModel]()
 
     var trackingNumbers = ["687100708024170011003255", "687100218024170137482623"]
     let apiCaller = ApiCaller()
@@ -17,7 +18,7 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         for i in 0...trackingNumbers.count - 1 {
             apiCaller.getData(trackingNumber: trackingNumbers[i]) {(parcel: ParcelModel) in
-                parcelsList.append(parcel)
+                self.parcelsList.append(parcel)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -28,7 +29,6 @@ class MainVC: UIViewController {
     override func loadView() {
         super.loadView()
         setupUI()
-        
     }
     
     func setupUI() {
@@ -61,6 +61,10 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         cell.trackingNumberLabel.text = parcelsList[indexPath.row].tracking_number
         cell.statusLabel.text = parcelsList[indexPath.row].status!.statusRefactor()
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        <#code#>
     }
     
     

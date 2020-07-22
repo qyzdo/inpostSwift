@@ -133,6 +133,3 @@ struct Address : Codable {
         case line2 = "line2"
     }
 }
-
-
-var parcelsList = [ParcelModel]()
