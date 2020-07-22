@@ -64,7 +64,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        let vc = DetailsVC()
+        self.present(vc, animated: true, completion: nil)
     }
     
     
