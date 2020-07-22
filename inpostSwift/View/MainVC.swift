@@ -10,7 +10,7 @@ import UIKit
 class MainVC: UIViewController {
     let tableView = UITableView()
     var safeArea: UILayoutGuide!
-    var parcelsList = [ParcelModel]()
+    var parcelsArray = [ParcelModel]()
 
     var trackingNumbers = ["687100708024170011003255", "687100218024170137482623"]
     let apiCaller = ApiCaller()
@@ -18,7 +18,7 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         for i in 0...trackingNumbers.count - 1 {
             apiCaller.getData(trackingNumber: trackingNumbers[i]) {(parcel: ParcelModel) in
-                self.parcelsList.append(parcel)
+                self.parcelsArray.append(parcel)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -53,18 +53,19 @@ class MainVC: UIViewController {
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return parcelsList.count
+        return parcelsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
-        cell.trackingNumberLabel.text = parcelsList[indexPath.row].tracking_number
-        cell.statusLabel.text = parcelsList[indexPath.row].status!.statusRefactor()
+        cell.trackingNumberLabel.text = parcelsArray[indexPath.row].tracking_number
+        cell.statusLabel.text = parcelsArray[indexPath.row].status!.statusRefactor()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailsVC()
+        vc.parcel = parcelsArray[indexPath.row]
         self.present(vc, animated: true, completion: nil)
     }
     
