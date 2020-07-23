@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CustomCell : UITableViewCell {
+class ParcelsCell : UITableViewCell {
     let trackingNumberTextLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black

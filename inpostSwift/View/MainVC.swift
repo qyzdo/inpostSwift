@@ -46,7 +46,7 @@ class MainVC: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(ParcelsCell.self, forCellReuseIdentifier: "ParcelsCell")
     }
 }
 
@@ -56,7 +56,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ParcelsCell", for: indexPath) as! ParcelsCell
         cell.trackingNumberLabel.text = parcelsArray[indexPath.row].tracking_number
         cell.statusLabel.text = parcelsArray[indexPath.row].status!.statusRefactor()
         return cell
