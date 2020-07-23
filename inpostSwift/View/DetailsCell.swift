@@ -28,7 +28,7 @@ class DetailsCell : UITableViewCell {
         lbl.text = "STATUS"
         return lbl
     }()
-
+    
     
     let dateTimeLabel : UILabel = {
         let lbl = UILabel()
@@ -45,7 +45,7 @@ class DetailsCell : UITableViewCell {
         addSubview(dateTimeLabel)
         addSubview(originStatusLabel)
         addSubview(statusLabel)
-
+        
         statusLabel.anchor(top: topAnchor, left: leftAnchor, bottom: originStatusLabel.topAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 15, paddingBottom: 5, paddingRight: 5, width: 0, height: 0, enableInsets: false)
         originStatusLabel.anchor(top: statusLabel.bottomAnchor, left: leftAnchor, bottom: dateTimeLabel.topAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 15, paddingBottom: 5, paddingRight: 5, width: 0, height: 0, enableInsets: false)
         dateTimeLabel.anchor(top: originStatusLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 15, paddingBottom: 5, paddingRight: 5, width: 0, height: 0, enableInsets: false)

@@ -12,7 +12,7 @@ class DetailsVC: UIViewController {
     var safeArea: UILayoutGuide!
     var parcel:ParcelModel?
     var trackingDetailsArray = [Tracking_details]()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,18 +40,18 @@ class DetailsVC: UIViewController {
         tableView.register(DetailsCell.self, forCellReuseIdentifier: "cell")
     }
 }
-    
-    extension DetailsVC: UITableViewDelegate, UITableViewDataSource {
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return (parcel?.tracking_details!.count)!
-        }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DetailsCell
-            cell.dateTimeLabel.text = trackingDetailsArray[indexPath.row].datetime
-            cell.statusLabel.text = trackingDetailsArray[indexPath.row].status!.statusRefactor()
-            cell.originStatusLabel.text = trackingDetailsArray[indexPath.row].origin_status
-            return cell
-        }
-        
+
+extension DetailsVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (parcel?.tracking_details!.count)!
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DetailsCell
+        cell.dateTimeLabel.text = trackingDetailsArray[indexPath.row].datetime
+        cell.statusLabel.text = trackingDetailsArray[indexPath.row].status!.statusRefactor()
+        cell.originStatusLabel.text = trackingDetailsArray[indexPath.row].origin_status
+        return cell
+    }
+    
+}

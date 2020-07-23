@@ -18,9 +18,9 @@ struct ParcelModel : Codable {
     let expected_flow : [String]?
     let created_at : String?
     let updated_at : String?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case tracking_number = "tracking_number"
         case service = "service"
         case type = "type"
@@ -39,9 +39,9 @@ struct Tracking_details : Codable {
     let origin_status : String?
     let agency : String?
     let datetime : String?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case status = "status"
         case origin_status = "origin_status"
         case agency = "agency"
@@ -57,9 +57,9 @@ struct Target_machine_detail : Codable {
     let address : Address?
     let type : [String]?
     let location247 : Bool?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case name = "name"
         case opening_hours = "opening_hours"
         case location_description = "location_description"
@@ -68,15 +68,15 @@ struct Target_machine_detail : Codable {
         case type = "type"
         case location247 = "location247"
     }
-
+    
 }
 
 struct Location : Codable {
     let latitude : Double?
     let longitude : Double?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case latitude = "latitude"
         case longitude = "longitude"
     }
@@ -91,9 +91,9 @@ struct Dropoff_machine_detail : Codable {
     let address : Address?
     let type : [String]?
     let location247 : Bool?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case name = "name"
         case opening_hours = "opening_hours"
         case location_description = "location_description"
@@ -111,9 +111,9 @@ struct Custom_attributes : Codable {
     let target_machine_detail : Target_machine_detail?
     let dropoff_machine_detail : Dropoff_machine_detail?
     let end_of_week_collection : Bool?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case size = "size"
         case target_machine_id = "target_machine_id"
         case dropoff_machine_id = "dropoff_machine_id"
@@ -126,9 +126,9 @@ struct Custom_attributes : Codable {
 struct Address : Codable {
     let line1 : String?
     let line2 : String?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case line1 = "line1"
         case line2 = "line2"
     }

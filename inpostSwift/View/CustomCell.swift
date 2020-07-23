@@ -35,7 +35,7 @@ class CustomCell : UITableViewCell {
         lbl.text = "STATUS"
         return lbl
     }()
-
+    
     let statusLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
@@ -52,7 +52,7 @@ class CustomCell : UITableViewCell {
         addSubview(trackingNumberLabel)
         addSubview(statusTextLabel)
         addSubview(statusLabel)
-
+        
         trackingNumberTextLabel.anchor(top: topAnchor, left: leftAnchor, bottom: trackingNumberLabel.topAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 15, paddingBottom: 5, paddingRight: 5, width: 0, height: 0, enableInsets: false)
         trackingNumberLabel.anchor(top: trackingNumberTextLabel.bottomAnchor, left: leftAnchor, bottom: statusTextLabel.topAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 15, paddingBottom: 5, paddingRight: 5, width: 0, height: 0, enableInsets: false)
         statusTextLabel.anchor(top: trackingNumberLabel.bottomAnchor, left: leftAnchor, bottom: statusLabel.topAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 15, paddingBottom: 5, paddingRight: 5, width: 0, height: 0, enableInsets: false)

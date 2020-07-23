@@ -8,9 +8,8 @@
 import Foundation
 
 extension String {
-
-
-func statusRefactor() -> String{
+    
+    func statusRefactor() -> String{
         var string = self
         switch string {
         case "out_for_delivery":
@@ -36,7 +35,7 @@ func statusRefactor() -> String{
             
         case "collected_from_sender":
             string = "Przejęta od nadawcy"
-                     
+            
             
         default:
             string = self
