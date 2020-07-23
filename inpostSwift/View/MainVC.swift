@@ -11,7 +11,7 @@ class MainVC: UIViewController {
     let tableView = UITableView()
     var safeArea: UILayoutGuide!
     var parcelsArray = [ParcelModel]()
-
+    
     var trackingNumbers = ["687100708024170011003255", "687100218024170137482623"]
     let apiCaller = ApiCaller()
     
@@ -66,7 +66,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         let vc = DetailsVC()
         vc.parcel = parcelsArray[indexPath.row]
         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
