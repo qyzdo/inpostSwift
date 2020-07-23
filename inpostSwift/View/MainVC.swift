@@ -41,13 +41,12 @@ class MainVC: UIViewController {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CustomCell.self, forCellReuseIdentifier: "cell")
-        tableView.backgroundColor = .gray
     }
 }
 
@@ -66,6 +65,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailsVC()
         vc.parcel = parcelsArray[indexPath.row]
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
     
