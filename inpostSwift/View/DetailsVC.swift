@@ -273,7 +273,14 @@ extension DetailsVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DetailsCell
-        cell.dateTimeLabel.text = trackingDetailsArray[indexPath.row].datetime
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+        let date = dateFormatter.date(from:trackingDetailsArray[indexPath.row].datetime!)
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let dateChanged = dateFormatter.string(from: date!)
+        cell.dateTimeLabel.text = dateChanged
+        
         cell.statusLabel.text = trackingDetailsArray[indexPath.row].status!.statusRefactor()
         cell.originStatusLabel.text = trackingDetailsArray[indexPath.row].origin_status
         return cell
