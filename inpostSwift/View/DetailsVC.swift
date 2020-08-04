@@ -38,6 +38,7 @@ class DetailsVC: UIViewController {
     }()
     
     func setupUI() {
+        self.title = parcel?.tracking_number
         view.backgroundColor = .white
         safeArea = view.layoutMarginsGuide
         setupParcelView()

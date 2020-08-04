@@ -32,6 +32,13 @@ class MainVC: UIViewController {
     }
     
     func setupUI() {
+        let navigationBar = self.navigationController?.navigationBar
+        navigationBar?.isTranslucent = true
+        navigationBar?.barTintColor = .systemYellow
+        self.title = "Moje przesyłki"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem?.tintColor = .black
+
         view.backgroundColor = .white
         safeArea = view.layoutMarginsGuide
         if(UserDefaults.standard.bool(forKey: "HasLaunchedOnce") == false) {
