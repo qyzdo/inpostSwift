@@ -17,10 +17,10 @@ class ApiCaller {
                 print("error: \(error)")
             } else {
                 if let response = response as? HTTPURLResponse {
-                    print("responseCode: \(response.statusCode)")
+//                    print("responseCode: \(response.statusCode)")
                 }
                 if let data = data {
-                    print(String(decoding: data, as:UTF8.self))
+//                    print(String(decoding: data, as:UTF8.self))
                     do {
                         let model = try JSONDecoder().decode(ParcelModel.self, from: data)
                         completion(model)

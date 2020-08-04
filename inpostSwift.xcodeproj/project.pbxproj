@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1643E28424CF8DA700D9BCD5 /* box.json in Resources */ = {isa = PBXBuildFile; fileRef = 1643E28324CF8DA700D9BCD5 /* box.json */; };
 		1654F90B24BA725B00B7358E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654F90A24BA725B00B7358E /* AppDelegate.swift */; };
 		1654F90D24BA725B00B7358E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654F90C24BA725B00B7358E /* SceneDelegate.swift */; };
 		1654F90F24BA725B00B7358E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1654F90E24BA725B00B7358E /* MainVC.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1643E28324CF8DA700D9BCD5 /* box.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = box.json; sourceTree = "<group>"; };
 		1654F90724BA725B00B7358E /* inpostSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inpostSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1654F90A24BA725B00B7358E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1654F90C24BA725B00B7358E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		1654F8FE24BA725B00B7358E = {
 			isa = PBXGroup;
 			children = (
+				1643E28324CF8DA700D9BCD5 /* box.json */,
 				1654F90924BA725B00B7358E /* inpostSwift */,
 				1654F92024BA725D00B7358E /* inpostSwiftTests */,
 				1654F92B24BA725D00B7358E /* inpostSwiftUITests */,
@@ -205,7 +208,6 @@
 				9F40F7CF7B713700B4AA8DBD /* Pods-inpostSwiftTests.debug.xcconfig */,
 				85DE8B2C297D449DF19D3C51 /* Pods-inpostSwiftTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -329,6 +331,7 @@
 			files = (
 				1654F91724BA725D00B7358E /* LaunchScreen.storyboard in Resources */,
 				1654F91424BA725D00B7358E /* Assets.xcassets in Resources */,
+				1643E28424CF8DA700D9BCD5 /* box.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
