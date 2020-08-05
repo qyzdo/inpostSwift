@@ -16,10 +16,11 @@ class MainVC: UIViewController {
     let animationView = AnimationView(name: "box")
     let label = UILabel()
     
-    var trackingNumbers = ["687100708024170011003255", "687100218024170137482623", "600441497024170126732236", "642202397024170117575245", "663410197024170119003197", "682300297024170014391380"]
+    var trackingNumbers = ["687100708024170011003255", "663410197024170119003197", "682300297024170014391380"]
     let apiCaller = ApiCaller()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         for i in 0...trackingNumbers.count - 1 {
             apiCaller.getData(trackingNumber: trackingNumbers[i]) {(parcel: ParcelModel) in
                 self.parcelsArray.append(parcel)
@@ -28,17 +29,23 @@ class MainVC: UIViewController {
                 }
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupNavbar()
         setupUI()
     }
     
-    func setupUI() {
+    func setupNavbar() {
         let navigationBar = self.navigationController?.navigationBar
         navigationBar?.isTranslucent = true
         navigationBar?.barTintColor = .systemYellow
         self.title = "Moje przesyłki"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = .black
-
+    }
+    
+    func setupUI() {
         view.backgroundColor = .white
         safeArea = view.layoutMarginsGuide
         if(UserDefaults.standard.bool(forKey: "HasLaunchedOnce") == false) {
@@ -51,7 +58,7 @@ class MainVC: UIViewController {
     
     func setupOnboardingScreen() {
         tableView.isHidden = true
-        print("IS FALSE")
+        self.navigationController?.navigationBar.isHidden = true
         animationView.contentMode = .scaleAspectFit
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.loopMode = .loop
@@ -88,12 +95,10 @@ class MainVC: UIViewController {
         button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         button.widthAnchor.constraint(equalToConstant: 350).isActive = true
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        
-        
     }
+    
     func hideOnboardingScreen() {
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.allowAnimatedContent, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.allowAnimatedContent, animations: {
             self.label.alpha = 0
             self.animationView.alpha = 0
             self.button.alpha = 0
@@ -104,7 +109,13 @@ class MainVC: UIViewController {
             self.button.isHidden = true
         })
         
-        UIView.animate(withDuration: 2, delay: 0.1, options: UIView.AnimationOptions.allowAnimatedContent, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions.allowAnimatedContent, animations: {
+            self.navigationController?.navigationBar.alpha = 0
+            self.navigationController?.navigationBar.isHidden = false
+            self.navigationController?.navigationBar.alpha = 1
+        })
+        
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: UIView.AnimationOptions.allowAnimatedContent, animations: {
             self.tableView.alpha = 0
             self.tableView.isHidden = false
             self.tableView.alpha = 1
