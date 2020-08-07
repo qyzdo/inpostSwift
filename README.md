@@ -13,7 +13,7 @@ Check almost the same app created in objective-c with storyboards here: https://
 ##### • Navigation controller
 
 # Example Screenshots
-  <img width="350" height="600" src="https://gyazo.com/8f9b6d55bfaa4c17483b5e6a22716344.png"> <img width="350" height="600" src="https://gyazo.com/12bf50ed004cba4c6875d02268ece621.png">
+  <img width="350" height="700" src="https://gyazo.com/8f9b6d55bfaa4c17483b5e6a22716344.png"> <img width="350" height="700" src="https://gyazo.com/12bf50ed004cba4c6875d02268ece621.png">
   
   
 
