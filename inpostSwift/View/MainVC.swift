@@ -16,17 +16,27 @@ class MainVC: UIViewController {
     let animationView = AnimationView(name: "box")
     let label = UILabel()
     
-    var trackingNumbers = ["687100708024170011003255", "663410197024170119003197", "682300297024170014391380"]
+    var trackingNumbers = ["663410197024170119003197", "682300297024170014391380", "639200607024170121151210"]
     let apiCaller = ApiCaller()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         for i in 0...trackingNumbers.count - 1 {
-            apiCaller.getData(trackingNumber: trackingNumbers[i]) {(parcel: ParcelModel) in
-                self.parcelsArray.append(parcel)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+            apiCaller.getData(trackingNumber: trackingNumbers[i]) {result in
+                switch result {
+                case .success(let parcel):
+                    self.parcelsArray.append(parcel)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                case .failure( _):
+                    let parcel = ParcelModel(tracking_number: self.trackingNumbers[i], service: nil, type: nil, status: nil, custom_attributes: nil, tracking_details: nil, expected_flow: nil, created_at: nil, updated_at: nil)
+                    self.parcelsArray.append(parcel)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
+                
             }
         }
     }
@@ -149,15 +159,21 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ParcelsCell", for: indexPath) as! ParcelsCell
         cell.trackingNumberLabel.text = parcelsArray[indexPath.row].tracking_number
-        cell.statusLabel.text = parcelsArray[indexPath.row].status!.statusRefactor()
+        if let status = parcelsArray[indexPath.row].status {
+            cell.statusLabel.text = status.statusRefactor()
+        } else {
+            cell.statusLabel.text = "Błędny numer przesyłki"
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailsVC()
-        vc.parcel = parcelsArray[indexPath.row]
-        vc.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
+        if parcelsArray[indexPath.row].status != nil {
+            let vc = DetailsVC()
+            vc.parcel = parcelsArray[indexPath.row]
+            vc.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     

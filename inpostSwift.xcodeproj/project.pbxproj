@@ -134,7 +134,7 @@
 				1654F94724BA89F200B7358E /* Extensions */,
 				1654F94024BA803200B7358E /* View */,
 				1654F93F24BA802B00B7358E /* Networking */,
-				1654F93E24BA802200B7358E /* Data */,
+				1654F93E24BA802200B7358E /* Model */,
 				1654F90A24BA725B00B7358E /* AppDelegate.swift */,
 				1654F90C24BA725B00B7358E /* SceneDelegate.swift */,
 				1654F91324BA725D00B7358E /* Assets.xcassets */,
@@ -162,12 +162,12 @@
 			path = inpostSwiftUITests;
 			sourceTree = "<group>";
 		};
-		1654F93E24BA802200B7358E /* Data */ = {
+		1654F93E24BA802200B7358E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				1654F93C24BA76E300B7358E /* ParcelModel.swift */,
 			);
-			path = Data;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1654F93F24BA802B00B7358E /* Networking */ = {
