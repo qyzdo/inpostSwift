@@ -8,7 +8,8 @@
 import UIKit
 import Lottie
 
-class MainVC: UIViewController {
+class MainVC: UIViewController, MyDataSendingDelegateProtocol {
+    
     let tableView = UITableView()
     var safeArea: UILayoutGuide!
     var parcelsArray = [ParcelModel]()
@@ -16,7 +17,7 @@ class MainVC: UIViewController {
     let animationView = AnimationView(name: "box")
     let label = UILabel()
     
-    var trackingNumbers = ["663410197024170119003197", "682300297024170014391380", "639200607024170121151210"]
+    var trackingNumbers = ["663410197024170119003197", "682300297024170014391380"]
     let apiCaller = ApiCaller()
     
     override func viewDidLoad() {
@@ -25,19 +26,26 @@ class MainVC: UIViewController {
             apiCaller.getData(trackingNumber: trackingNumbers[i]) {result in
                 switch result {
                 case .success(let parcel):
-                    self.parcelsArray.append(parcel)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+                    self.addNewParcel(parcel: parcel)
                 case .failure( _):
-                    let parcel = ParcelModel(tracking_number: self.trackingNumbers[i], service: nil, type: nil, status: nil, custom_attributes: nil, tracking_details: nil, expected_flow: nil, created_at: nil, updated_at: nil)
-                    self.parcelsArray.append(parcel)
+                    self.parcelsArray.append(ParcelModel.createEmptyParcel(number: self.trackingNumbers[i]))
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
                 }
                 
             }
+        }
+    }
+    
+    func foundedNewParcel(parcel: ParcelModel) {
+        addNewParcel(parcel: parcel)
+    }
+    
+    func addNewParcel(parcel: ParcelModel) {
+        self.parcelsArray.append(parcel)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
     
@@ -53,11 +61,12 @@ class MainVC: UIViewController {
         self.title = "Moje przesyłki"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = .black
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dodaj", style: .done, target: self, action: #selector(addParcel))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dodaj", style: .done, target: self, action: #selector(addButtonClicked))
     }
     
-    @objc func addParcel() {
+    @objc func addButtonClicked() {
         let vc = AddNewParcelVC()
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -31,6 +31,10 @@ struct ParcelModel : Codable {
         case created_at = "created_at"
         case updated_at = "updated_at"
     }
+    
+    static func createEmptyParcel(number: String) -> ParcelModel {
+        return ParcelModel(tracking_number: number, service: nil, type: nil, status: nil, custom_attributes: nil, tracking_details: nil, expected_flow: nil, created_at: nil, updated_at: nil)
+    }
 }
 
 

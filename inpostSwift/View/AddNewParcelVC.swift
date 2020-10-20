@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol MyDataSendingDelegateProtocol {
+    func foundedNewParcel(parcel: ParcelModel)
+}
+
 class AddNewParcelVC: UIViewController {
     let apiCaller = ApiCaller()
+    var delegate: MyDataSendingDelegateProtocol? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +93,11 @@ class AddNewParcelVC: UIViewController {
             apiCaller.getData(trackingNumber: trackingNumber) { result in
                 switch result {
                 case .success(let parcel):
-                    print(parcel)
+                    self.delegate?.foundedNewParcel(parcel: parcel)
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                        
+                    }
                 case .failure(let error):
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Błąd dodawania przesyłki", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
