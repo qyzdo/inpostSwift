@@ -53,6 +53,12 @@ class MainVC: UIViewController {
         self.title = "Moje przesyłki"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = .black
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dodaj", style: .done, target: self, action: #selector(addParcel))
+    }
+    
+    @objc func addParcel() {
+        let vc = AddNewParcelVC()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupUI() {

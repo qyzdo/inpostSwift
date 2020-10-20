@@ -20,7 +20,6 @@ class DetailsVC: UIViewController {
         setupUI()
     }
     
-    
     let parcelView : UIView = {
         let view = UIView()
         view.backgroundColor = .systemYellow
