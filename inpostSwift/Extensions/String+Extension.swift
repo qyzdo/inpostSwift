@@ -48,6 +48,9 @@ extension String {
         case "out_for_delivery_to_address":
             string = "W doręczeniu"
             
+        case "stack_in_customer_service_point":
+            string = "Do odbioru w punkcie"
+            
         default:
             string = self
         }
