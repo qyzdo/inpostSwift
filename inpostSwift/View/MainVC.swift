@@ -15,30 +15,20 @@ class MainVC: UIViewController, MyDataSendingDelegateProtocol {
     let button = UIButton(type: .system)
     let animationView = AnimationView(name: "box")
     let label = UILabel()
+    let defaults = UserDefaults.standard
     
-    var trackingNumbers = ["663410197024170119003197", "682300297024170014391380"]
+    var trackingNumbers = [String]()
     let apiCaller = ApiCaller()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for i in 0...trackingNumbers.count - 1 {
-            apiCaller.getData(trackingNumber: trackingNumbers[i]) {result in
-                switch result {
-                case .success(let parcel):
-                    self.addNewParcel(parcel: parcel)
-                case .failure( _):
-                    self.parcelsArray.append(ParcelModel.createEmptyParcel(number: self.trackingNumbers[i]))
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
-                
-            }
-        }
+        loadData()
     }
     
     func foundedNewParcel(parcel: ParcelModel) {
+        self.trackingNumbers.append(parcel.tracking_number!)
         addNewParcel(parcel: parcel)
+        saveData()
     }
     
     func addNewParcel(parcel: ParcelModel) {
@@ -162,6 +152,33 @@ class MainVC: UIViewController, MyDataSendingDelegateProtocol {
         tableView.delegate = self
         tableView.register(ParcelsCell.self, forCellReuseIdentifier: "ParcelsCell")
     }
+    
+    func saveData() {
+        defaults.set(trackingNumbers, forKey: "SavedArray")
+    }
+    
+    func loadData() {
+        if let array = defaults.object(forKey: "SavedArray") {
+            trackingNumbers = array as! [String]
+            if trackingNumbers.count > 0 {
+                fetchData()
+            }
+        }
+    }
+    
+    func fetchData() {
+        parcelsArray.removeAll()
+        for i in 0...trackingNumbers.count - 1 {
+            apiCaller.getData(trackingNumber: trackingNumbers[i]) {result in
+                switch result {
+                case .success(let parcel):
+                    self.addNewParcel(parcel: parcel)
+                case .failure( _):
+                    self.addNewParcel(parcel: ParcelModel.createEmptyParcel(number: self.trackingNumbers[i]))
+                }
+            }
+        }
+    }
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
@@ -191,10 +208,10 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            trackingNumbers.remove(at: indexPath.row)
             parcelsArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            saveData()
         }
     }
-    
-    
 }
