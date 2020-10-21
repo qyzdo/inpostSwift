@@ -11,7 +11,6 @@ import Lottie
 class MainVC: UIViewController, MyDataSendingDelegateProtocol {
     
     let tableView = UITableView()
-    var safeArea: UILayoutGuide!
     var parcelsArray = [ParcelModel]()
     let button = UIButton(type: .system)
     let animationView = AnimationView(name: "box")
@@ -72,7 +71,6 @@ class MainVC: UIViewController, MyDataSendingDelegateProtocol {
     
     func setupUI() {
         view.backgroundColor = .white
-        safeArea = view.layoutMarginsGuide
         if(UserDefaults.standard.bool(forKey: "HasLaunchedOnce") == false) {
             setupTableView()
             setupOnboardingScreen()
@@ -99,7 +97,7 @@ class MainVC: UIViewController, MyDataSendingDelegateProtocol {
         label.layer.masksToBounds = true
         view.addSubview(label)
         label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        label.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 5).isActive = true
+        label.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 5).isActive = true
         label.widthAnchor.constraint(equalToConstant: 350).isActive = true
         label.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -156,10 +154,10 @@ class MainVC: UIViewController, MyDataSendingDelegateProtocol {
     func setupTableView() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).isActive = true
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(ParcelsCell.self, forCellReuseIdentifier: "ParcelsCell")
@@ -188,6 +186,13 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             vc.parcel = parcelsArray[indexPath.row]
             vc.modalPresentationStyle = .fullScreen
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            parcelsArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
