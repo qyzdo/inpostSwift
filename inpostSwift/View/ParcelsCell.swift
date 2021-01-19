@@ -12,7 +12,7 @@ class ParcelsCell : UITableViewCell {
     let trackingNumberTextLabel : UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.textColor = .black
+        lbl.textColor = .label
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
         lbl.textAlignment = .left
         lbl.text = "NR PRZESYŁKI"
@@ -22,7 +22,7 @@ class ParcelsCell : UITableViewCell {
     let trackingNumberLabel : UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.textColor = .black
+        lbl.textColor = .label
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.textAlignment = .left
         return lbl
@@ -31,7 +31,7 @@ class ParcelsCell : UITableViewCell {
     let statusTextLabel : UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.textColor = .black
+        lbl.textColor = .label
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
@@ -42,7 +42,7 @@ class ParcelsCell : UITableViewCell {
     let statusLabel : UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.textColor = .black
+        lbl.textColor = .label
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
@@ -58,7 +58,7 @@ class ParcelsCell : UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+
         contentView.addSubview(customContentView)
         customContentView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
         customContentView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 5).isActive = true

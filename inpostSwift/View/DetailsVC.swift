@@ -38,7 +38,7 @@ class DetailsVC: UIViewController {
     
     func setupUI() {
         self.title = parcel?.tracking_number
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         safeArea = view.layoutMarginsGuide
         setupParcelView()
         setupLockersView()
@@ -49,8 +49,8 @@ class DetailsVC: UIViewController {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: lockersView.bottomAnchor, constant: 5).isActive = true
-        tableView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 5).isActive = true
-        tableView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: 5).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 5).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 5).isActive = true
         tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 5).isActive = true
         tableView.dataSource = self
         tableView.delegate = self

@@ -12,7 +12,7 @@ class DetailsCell : UITableViewCell {
     
     let statusLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
+        lbl.textColor = .label
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
@@ -21,7 +21,7 @@ class DetailsCell : UITableViewCell {
     
     let originStatusLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
+        lbl.textColor = .label
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
@@ -32,7 +32,7 @@ class DetailsCell : UITableViewCell {
     
     let dateTimeLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
+        lbl.textColor = .label
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.textAlignment = .left
         lbl.text = "NR PRZESYŁKI"

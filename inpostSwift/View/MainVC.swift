@@ -60,7 +60,7 @@ class MainVC: UIViewController, MyDataSendingDelegateProtocol {
     }
     
     func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         if(UserDefaults.standard.bool(forKey: "HasLaunchedOnce") == false) {
             setupTableView()
             setupOnboardingScreen()
@@ -145,8 +145,8 @@ class MainVC: UIViewController, MyDataSendingDelegateProtocol {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).isActive = true
         tableView.dataSource = self
         tableView.delegate = self
